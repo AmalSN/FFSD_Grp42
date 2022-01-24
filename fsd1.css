@@ -1,0 +1,16 @@
+body{
+    background-color: black;
+    text-align: center;
+}
+#tableHead{
+    background-color: yellow;
+}
+#tableMain{
+    border: solid 2px;
+    background-color: gray;
+    margin-left: auto;
+    margin-right: auto;
+}
+#mainHeading{
+    color: blue;
+}
