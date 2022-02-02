@@ -1,0 +1,16 @@
+body {
+    white-space: normal;
+    margin: 0;
+    text-align: center;
+    background-color: powderblue;
+}
+
+
+.box {
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    background-color: antiquewhite;
+    margin: 0px;
+    border: solid 10px black;
+}
