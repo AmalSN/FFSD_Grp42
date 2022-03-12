@@ -1,2 +1,2 @@
-# FFSD_Grp1
+# FFSD_G
 ***IIITS FFSD Group 1 Project***
