@@ -1,4 +1,10 @@
-/* Make page responsive */
+/* Make page responsive 
+Please Check If its responsive 
+CHANGED TO REM SINCE (READ REM IS REPONSIVE) and CALCULATION IS NOTED
+ PX->> REM CALCULATION: 1 REM=16 PX 
+ PERCENTAGE TO REM: 1%=0.01REM
+ 
+*/
 
 * {
     margin: 0;
@@ -43,12 +49,12 @@
 }
 
 .heading{
-    margin-bottom: 3%;
+    margin-bottom: 0.03rem;
     text-decoration: underline;
     text-decoration-style: dotted;
     background-color: aliceblue;
-    padding: 10px;
-    border-radius: 20%;
+    padding: 0.625rem;
+    border-radius: 0.2rem;
     color: rgb(37, 94, 102);
 }
 
@@ -63,21 +69,21 @@
 
 .board {
     display: grid;
-    width: 300px;
-    height: 300px;
+    width: 18.75rem;
+    height: 18.75rem;
     grid-template-columns: auto auto auto;
 }
 
 .block {
     display: flex;
-    width: 100px;
-    height: 100px;
-    font-size: 50px;
+    width: 6.25rem;
+    height: 6.25rem;
+    font-size: 3.125rem;
     color: rgb(129, 98, 98);
     font-weight: bold;
     align-items: center;
     justify-content: center;
-    border: 3px solid black;
+    border: 0.188rem solid black;
 }
 
 .top-row {
@@ -114,13 +120,13 @@
     background-image: linear-gradient(to bottom, #3498db, #2980b9);
     -webkit-border-radius: 28;
     -moz-border-radius: 28;
-    border-radius: 28px;
+    border-radius: 1.75rem;
     font-family: Arial;
     color: #ffffff;
-    font-size: 20px;
-    padding: 10px 20px 10px 20px;
+    font-size: 1.25rem;
+    padding: 0.625rem 1.25rem 0.625rem 1.25rem;
     text-decoration: none;
-    margin-top: 50px;
+    margin-top: 3.125rem;
   }
   
   .btn:hover {
