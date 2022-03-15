@@ -1,0 +1,23 @@
+.brown-color{
+    background-color: burlywood;
+}
+
+.font-special{
+    font-size: 5rem;
+    /* color: rgb(114, 21, 21); */
+    color: brown;
+    font-family: 'Pacifico', cursive;
+}
+
+.carousel {
+    width: 40vw;  /*500*/
+    height: 70vh;  /*400*/
+}
+
+.img-change{
+    height: 70vh;
+}
+
+.box-transparent{
+    opacity: 0.8;
+}
