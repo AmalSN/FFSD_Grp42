@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/games", gameRoutes);
 
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "views", "index.html"));
+    res.sendFile(path.join(__dirname, "views", "Main-Page.html"));
 });
 
-app.listen(3000);
+app.listen(4000);
