@@ -5,6 +5,41 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.overlay {
+  position: fixed;
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0,0,0,0.9);
+  z-index: 2;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.display-winner{
+  display: flex;
+  align-items: flex-end;
+  font-size: 3.125rem;
+  font-weight: bold;
+  color: white;
+  flex: 1.15;
+}
+
+.restart-message{
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+  flex: 1; 
+}
+
 .board-container{
     display: flex;
     flex: 2;
@@ -12,11 +47,17 @@
     justify-content: center;
 }
 
+canvas{
+  box-sizing: content-box;
+  border: 1px solid black;
+}
+
 .board{
+    box-sizing: content-box;
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
-    width: 503px;
-    height: 503px;
+    width: 500px;
+    height: 500px;
     border: #f4decb solid;
     box-shadow: 10px 10px #f4decb;
 }
@@ -24,6 +65,7 @@
 .block{
     width: 50px;
     height: 50px;
+    font-size: 10px;
     background-color: #94618e;
     border: 1px #f4decb solid;
 }
@@ -119,23 +161,23 @@
 
   .show-1 {
     transform: rotateX(720deg) rotateZ(-720deg); }
-  
-  .show-6 {
-    transform: rotateX(-900deg) rotateZ(1080deg); }
-  
-  .show-3 {
-    transform: rotateY(-450deg) rotateZ(-1440deg); }
-  
-  .show-4 {
-    transform: rotateY(810deg) rotateZ(720deg); }
-  
-  .show-5 {
-    transform: rotateX(-810deg) rotateZ(-1080deg); }
-  
-  .show-2 {
-    transform: rotateX(450deg) rotateZ(-720deg); }
 
-    button {
+    .show-2 {
+      transform: rotateX(-900deg) rotateZ(1080deg); }
+    
+    .show-6 {
+      transform: rotateY(-450deg) rotateZ(-1440deg); }
+    
+    .show-3{
+      transform: rotateY(810deg) rotateZ(720deg); }
+    
+    .show-4 {
+      transform: rotateX(-810deg) rotateZ(-1080deg); }
+    
+    .show-5 {
+      transform: rotateX(450deg) rotateZ(-720deg); }
+    
+      button {
         padding: 15px 50px;
         color: #fff;
         background-color: #f4d35e;
@@ -155,4 +197,46 @@
 
 #turn-indicator {
     font-size: 40px;
+}
+
+.piece{
+  font-size: 13px;
+}
+
+.red-piece-color {
+  color: red;
+}
+
+.blue-piece-color {
+  color: blue;
+}
+
+.yellow-piece-color {
+  color: yellow;
+}
+
+.green-piece-color {
+  color: green;
+}
+
+.snakePic, .ladderPic{
+  width: 200px;
+  height: 200px;
+  position: absolute;
+}
+
+#snake1{
+  width: 100px;
+  height: 180px;
+  left: 290px;
+  top: 430px;
+  transform: rotate(-43deg);
+}
+
+#ladder1{
+  width: 100px;
+  height: 180px;
+  left: 140px;
+  top: 390px;
+  transform: rotate(20deg);
 }

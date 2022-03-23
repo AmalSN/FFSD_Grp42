@@ -12,6 +12,44 @@
 </head>
 
 <body style="background-color: burlywood;">
+    <img src="../public/images/snake.png" class="snakePic" id="snake1">
+    <img src="../public/images/snake.png" class="snakePic" id="snake2">
+    <img src="../public/images/snake.png" class="snakePic" id="snake3">
+    <img src="../public/images/snake.png" class="snakePic" id="snake4">
+    <img src="../public/images/snake.png" class="snakePic" id="snake5">
+    <img src="../public/images/snake.png" class="snakePic" id="snake6">
+    <img src="../public/images/snake.png" class="snakePic" id="snake7">
+    <img src="../public/images/snake.png" class="snakePic" id="snake8">
+    <img src="../public/images/ladder.png" class="ladderPic" id="ladder1">
+    <img src="../public/images/ladder.png" class="ladderPic" id="ladder2">
+    <img src="../public/images/ladder.png" class="ladderPic" id="ladder3">
+    <img src="../public/images/ladder.png" class="ladderPic" id="ladder4">
+    <img src="../public/images/ladder.png" class="ladderPic" id="ladder5">
+    <img src="../public/images/ladder.png" class="ladderPic" id="ladder6">
+    <img src="../public/images/ladder.png" class="ladderPic" id="ladder7">
+    <img src="../public/images/ladder.png" class="ladderPic" id="ladder8">
+    <div class="overlay" onclick="off()">
+        <div class="display-winner"><span class="winner-text"></span></div>
+        <div class="restart-message"><span class="restart-text">Click anywhere on the screen to play again</span></div>
+    </div>
+    <div class="modal" id="choose-colors" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title mx-auto">Choose your Colors</h5>
+            </div>
+            <div class="modal-body">
+                <button type="button" class="btn btn-danger circular-button">RED</button>
+                <button type="button" class="btn btn-primary circular-button">BLUE</button>
+                <button type="button" class="btn btn-warning circular-button">YELLOW</button>
+                <button type="button" class="btn btn-success circular-button">GREEN</button>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid offset-md-4">
             <a class="navbar-brand text-warning" href="#">Board Nights</a>
@@ -75,8 +113,8 @@
             </div>
             <div class="dice-container col-6">
                 <div class="container">
-                    <div class="row offset-md-3">
-                        <div class="dice" id="dice1" style="width: 100px;height: 100px;">
+                    <div class="row">
+                        <div class="dice mx-auto" id="dice1" style="width: 100px;height: 100px;">
                             <div id="dice-one-side-one" class='side one'>
                                 <div class="dot one-1"></div>
                             </div>
@@ -112,7 +150,7 @@
                             </div>
                         </div>
 
-                        <div class="dice" id="dice2" style="width: 100px;height: 100px">
+                        <!-- <div class="dice" id="dice2" style="width: 100px;height: 100px">
                             <div id="dice-two-side-one" class='side one'>
                                 <div class="dot one-1"></div>
                             </div>
@@ -146,15 +184,14 @@
                                 <div class="dot six-5"></div>
                                 <div class="dot six-6"></div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="row">
-                        <div class="col-4"></div>
-                        <div id='roll' class="roll-button col-8"><button>Roll dice!</button></div>
+                        <div id='roll' class="roll-button"><button class="d-block mx-auto">Roll dice!</button></div>
                     </div>
                     <div class="row my-4">
                         <div class="col-4 my-auto">
-                            <p id="turn-indicator" class="text-center">Red Player's Turn</p>
+                            <p id="turn-indicator" class="text-center red-piece-color">Red Player's Turn</p>
                         </div>
                         <div class="card col-8 mx-auto" style="width: 18rem;">
                             <img src="..." class="card-img-top" alt="...">
