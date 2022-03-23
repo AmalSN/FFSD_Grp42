@@ -84,8 +84,6 @@ $(".board").html(boardBlockHTML);
 //   currColor = (currColor == "yellow") ? "white" : "yellow";
 // }
 
-
-
 function rollDice() {
 
   let diceOne   = Math.floor((Math.random() * 6) + 1);
