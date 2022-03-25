@@ -12,44 +12,32 @@
 </head>
 
 <body style="background-color: burlywood;">
-    <img src="/images/snake.png" class="snakePic" id="snake1">
-    <img src="/images/snake.png" class="snakePic" id="snake2">
-    <img src="/images/snake.png" class="snakePic" id="snake3">
-    <img src="/images/snake.png" class="snakePic" id="snake4">
-    <img src="/images/snake.png" class="snakePic" id="snake5">
-    <img src="/images/snake.png" class="snakePic" id="snake6">
-    <img src="/images/snake.png" class="snakePic" id="snake7">
-    <img src="/images/snake.png" class="snakePic" id="snake8">
-    <img src="/images/ladder.png" class="ladderPic" id="ladder1">
-    <img src="/images/ladder.png" class="ladderPic" id="ladder2">
-    <img src="/images/ladder.png" class="ladderPic" id="ladder3">
-    <img src="/images/ladder.png" class="ladderPic" id="ladder4">
-    <img src="/images/ladder.png" class="ladderPic" id="ladder5">
-    <img src="/images/ladder.png" class="ladderPic" id="ladder6">
-    <img src="/images/ladder.png" class="ladderPic" id="ladder7">
-    <img src="/images/ladder.png" class="ladderPic" id="ladder8">
+
+
     <div class="overlay" onclick="off()">
         <div class="display-winner"><span class="winner-text"></span></div>
-        <div class="restart-message"><span class="restart-text">Click anywhere on the screen to play again</span></div>
-    </div>
-    <div class="modal" id="choose-colors" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title mx-auto">Choose your Colors</h5>
-            </div>
-            <div class="modal-body">
-                <button type="button" class="btn btn-danger circular-button">RED</button>
-                <button type="button" class="btn btn-primary circular-button">BLUE</button>
-                <button type="button" class="btn btn-warning circular-button">YELLOW</button>
-                <button type="button" class="btn btn-success circular-button">GREEN</button>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">OK</button>
-            </div>
-          </div>
+        <div class="restart-message"><span class="restart-text">Click anywhere on the screen to play again</span>
         </div>
-      </div>
+    </div>
+    <div class="modal" id="choose-colors" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mx-auto">Choose your Colors</h5>
+                </div>
+                <div class="modal-body">
+                    <button type="button" class="btn btn-danger circular-button">RED</button>
+                    <button type="button" class="btn btn-primary circular-button">BLUE</button>
+                    <button type="button" class="btn btn-warning circular-button">YELLOW</button>
+                    <button type="button" class="btn btn-success circular-button">GREEN</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid offset-md-4">
             <a class="navbar-brand text-warning" href="/">Board Nights</a>
@@ -109,7 +97,22 @@
     <div class="main-container container-fluid py-4">
         <div class="row">
             <div class="board-container col-6">
-                <div class="board"></div>
+                <div class="board relative-container">
+                    <img src="/images/snake.png" class="snakePic" id="snake1">
+                    <img src="/images/snake.png" class="snakePic" id="snake2">
+                    <img src="/images/snake.png" class="snakePic" id="snake3">
+                    <img src="/images/snake.png" class="snakePic" id="snake4">
+                    <img src="/images/snake.png" class="snakePic" id="snake5">
+                    <img src="/images/snake.png" class="snakePic" id="snake6">
+                    <img src="/images/snake.png" class="snakePic" id="snake7">
+                    <img src="/images/snake.png" class="snakePic" id="snake8">
+                    <img src="/images/ladder.png" class="ladderPic" id="ladder1">
+                    <img src="/images/ladder.png" class="ladderPic" id="ladder2">
+                    <img src="/images/ladder.png" class="ladderPic" id="ladder3">
+                    <img src="/images/ladder.png" class="ladderPic" id="ladder4">
+                    <img src="/images/ladder.png" class="ladderPic" id="ladder5">
+                    <img src="/images/ladder.png" class="ladderPic" id="ladder6">
+                </div>
             </div>
             <div class="dice-container col-6">
                 <div class="container">
@@ -197,7 +200,8 @@
                             <img src="..." class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                <p class="card-text">Some quick example text to build on the card title and make up
+                                    the
                                     bulk of the card's content.</p>
                                 <a href="#" class="btn btn-primary">Go somewhere</a>
                             </div>
@@ -207,7 +211,6 @@
             </div>
         </div>
     </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/Snake-Ladder.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

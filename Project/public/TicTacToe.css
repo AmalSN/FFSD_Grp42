@@ -49,7 +49,7 @@ PERCENTAGE TO REM: 1%=0.01REM
 }
 
 .heading{
-    margin-bottom: 0.03rem;
+    margin-bottom: 1rem;
     text-decoration: underline;
     text-decoration-style: dotted;
     background-color: aliceblue;
@@ -58,7 +58,7 @@ PERCENTAGE TO REM: 1%=0.01REM
     color: rgb(37, 94, 102);
 }
 
-.container {
+.container-tic {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -111,7 +111,7 @@ PERCENTAGE TO REM: 1%=0.01REM
     background-color: rgb(252, 182, 182);
 }
 
-.btn {
+.btn1 {
     background: #3498db;
     background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
     background-image: -moz-linear-gradient(top, #3498db, #2980b9);
@@ -129,7 +129,7 @@ PERCENTAGE TO REM: 1%=0.01REM
     margin-top: 3.125rem;
   }
   
-  .btn:hover {
+  .btn1:hover {
     background: #3cb0fd;
     background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
     background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
