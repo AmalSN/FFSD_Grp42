@@ -42,7 +42,7 @@ for(let y = 0; y < 5; y++){
       cnt--;
       boardBlockHTML += `
       <div class="block block${cnt}">
-        ${cnt}<br>
+        ${cnt}
         <span class = "piece red-piece-color"></span>
         <span class = "piece blue-piece-color"></span>
         <span class = "piece yellow-piece-color"></span>
@@ -54,7 +54,7 @@ for(let y = 0; y < 5; y++){
     for(let x = 0; x < 10; x++){
       boardBlockHTML += `
       <div class="block block${cnt}">
-        ${cnt}<br>
+        ${cnt}
         <span class = "piece red-piece-color"></span>
         <span class = "piece blue-piece-color"></span>
         <span class = "piece yellow-piece-color"></span>
@@ -66,7 +66,9 @@ for(let y = 0; y < 5; y++){
     cnt -= 10;
 }
 
-$(".board").html(boardBlockHTML);
+let currentHtml = $(".board").html();
+
+$(".board").html(currentHtml + boardBlockHTML);
 
 // let canvas = document.querySelector("canvas");
 
@@ -129,28 +131,31 @@ function changeColor(){
 }
 
 function pieceMovement(pieceColor, spotsMoved){
-  if(playerPosition[colorNumbering[pieceColor]] + spotsMoved <= 100){
-    $(`.block${playerPosition[colorNumbering[pieceColor]]} .${pieceColor}-piece-color`).text("");
-    playerPosition[colorNumbering[pieceColor]] += spotsMoved;
-    $(`.block${playerPosition[colorNumbering[pieceColor]]} .${pieceColor}-piece-color`).text(pieceColor[0].toUpperCase());
-    let pos = playerPosition[colorNumbering[pieceColor]];
+  let pos = colorNumbering[pieceColor];
+  if(playerPosition[pos] + spotsMoved <= 100){
+    let x = $(`.block${playerPosition[pos] + spotsMoved} .${pieceColor}-piece-color`).offset();
+    $(`.block${playerPosition[pos] + spotsMoved} .${pieceColor}-piece-color`).
+    $(`.block${playerPosition[pos]} .${pieceColor}-piece-color`).html("");
+    playerPosition[pos] += spotsMoved;
+    $(`.block${playerPosition[pos]} .${pieceColor}-piece-color`).html(`<img src='/images/${pieceColor.toLowerCase()}Pawn.png'>`);
+    
     for(let i = 0; i < snakeList.length; i++){
       if(pos == snakeList[i][0]){
-        $(`.block${playerPosition[colorNumbering[pieceColor]]} .${pieceColor}-piece-color`).text("");
-        playerPosition[colorNumbering[pieceColor]] = snakeList[i][1];
-        $(`.block${playerPosition[colorNumbering[pieceColor]]} .${pieceColor}-piece-color`).text(pieceColor[0].toUpperCase());
+        $(`.block${playerPosition[pos]} .${pieceColor}-piece-color`).html("");
+        playerPosition[pos] = snakeList[i][1];
+        $(`.block${playerPosition[pos]} .${pieceColor}-piece-color`).html(`<img src='/images/${pieceColor.toLowerCase()}Pawn.png'>`);
         break;
       }      
     }
     for(let i = 0; i < ladderList.length; i++){
       if(pos == ladderList[i][0]){
-        $(`.block${playerPosition[colorNumbering[pieceColor]]} .${pieceColor}-piece-color`).text("");
-        playerPosition[colorNumbering[pieceColor]] = ladderList[i][1];
-        $(`.block${playerPosition[colorNumbering[pieceColor]]} .${pieceColor}-piece-color`).text(pieceColor[0].toUpperCase());
+        $(`.block${playerPosition[pos]} .${pieceColor}-piece-color`).html("");
+        playerPosition[pos] = ladderList[i][1];
+        $(`.block${playerPosition[pos]} .${pieceColor}-piece-color`).html(`<img src='/images/${pieceColor.toLowerCase()}Pawn.png'>`);
         break;
       }      
     }
-    if(playerPosition[colorNumbering[pieceColor]] == 100){
+    if(playerPosition[pos] == 100){
       $(".winner-text").text(currentColor[0].toUpperCase()+currentColor.slice(1)+" wins!!");
       on();
     }
@@ -160,10 +165,10 @@ function pieceMovement(pieceColor, spotsMoved){
 }
 
 
-$(".block1 .red-piece-color").text("R");
-$(".block1 .blue-piece-color").text("B");
-$(".block1 .yellow-piece-color").text("Y");
-$(".block1 .green-piece-color").text("G");
+$(".block1 .red-piece-color").html("<img src='/images/redPawn.png'>");
+$(".block1 .blue-piece-color").html("<img src='/images/bluePawn.png'>");
+$(".block1 .yellow-piece-color").html("<img src='/images/yellowPawn.png'>");
+$(".block1 .green-piece-color").html("<img src='/images/greenPawn.png'>");
 
 function off() {
   $(".overlay").css("display","none");

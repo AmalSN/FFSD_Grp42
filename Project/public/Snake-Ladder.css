@@ -199,8 +199,10 @@ canvas{
     font-size: 40px;
 }
 
-.piece{
-  font-size: 13px;
+.piece img{
+  width: 18px;
+  height: 18px;
+  transition: all .5s ease-in-out;
 }
 
 .red-piece-color {
@@ -219,24 +221,31 @@ canvas{
   color: green;
 }
 
+.relative-container{
+  position: relative;
+}
+
 .snakePic, .ladderPic{
   width: 200px;
   height: 200px;
   position: absolute;
 }
 
-#snake1{
-  width: 100px;
-  height: 180px;
-  left: 290px;
-  top: 430px;
-  transform: rotate(-43deg);
+.piece{
+  transition: all .5s ease-in-out;
 }
 
-#ladder1{
-  width: 100px;
-  height: 180px;
-  left: 140px;
-  top: 390px;
-  transform: rotate(20deg);
+#snake1{
+  width: 17%;
+  height: 20%;
+  left: 35%;
+  top: 80%;
+  transform: rotate(-25deg);
+}
+#snake2{
+left: 57%;
+width: 20%;
+top: 45%;
+height:22%;
+transform: rotate(+34deg);
 }
