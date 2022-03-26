@@ -1,0 +1,29 @@
+.bg-image {
+    background-image: url(/images/bg.avif);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+#ctr {
+    position: absolute;
+    left: 51%;
+    bottom: 10%;
+}
+
+
+
+.h3 {
+    text-align: center;
+    color: brown;
+
+}
