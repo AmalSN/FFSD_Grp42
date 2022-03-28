@@ -1,0 +1,375 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    
+}
+.Page{
+    display: flex;
+    height: 100vh;
+}
+.BOX1{
+    display: flex;
+    flex: 2;
+    border: 2px solid black;
+    background-color: burlywood;
+}
+
+.containerL{
+    width: 500px;
+    height: 500px;
+    margin: 10px auto;
+    cursor: pointer;
+    border: 1px solid burlywood;
+    background-color: white;
+}
+.container1,.container3{
+    width: 100%;
+    height: 40%;
+    display: flex;
+}
+
+.container2{
+    width: 100%;
+    height: 20%;
+    display: flex;
+}
+.r1c1,.r1c3,.r3c1,.r3c3{
+    width: 40%;
+    height: 100%;
+    align-items:center ;
+    justify-content: center;
+    display: flex;
+}
+.r1c2,.r3c2{
+    display: grid;
+    grid-template-rows: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6% ;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    width: 20%;
+    height: 100%;
+}
+.r2c1,.r2c3{
+    display: grid;
+    grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6% ;
+    grid-template-rows: 33.3% 33.3% 33.3%;
+    width: 40%;
+    height: 20%;
+}
+
+.r2c1,.r2c3{
+    width: 40%;
+    height: 100%;
+}
+.r2c2{
+    width: 20%;
+    height: 100%;
+}
+.green{
+    background-color: green;
+    
+}
+.yellow{
+    background-color: yellow;
+}
+.blue{
+    background-color: blue;
+}
+.red{
+    background-color: red;
+}
+.white{
+    background-color: white;
+}
+.r1c1c,.r1c3c,.r3c1c,.r3c3c{
+    height: 70%;
+    width: 70%;
+}
+.r1c1c>div,
+.r1c3c>div,
+.r3c1c>div,
+.r3c3c>div{
+    height: 35%;
+    width: 35%;
+    margin: 7.5%;
+    float: left;
+}
+.r1c1c>div:hover,
+.r1c3c>div:hover,
+.r3c1c>div:hover,
+.r3c3c>div:hover{
+    box-shadow: -2px 2px rgb(206, 84, 200);
+}
+
+
+
+
+.ludo-block{
+    border: 1px solid black;
+     
+}
+
+.triangle{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.triangle-g{
+    width: 0;
+    height: 0;
+    border-top: 50px solid transparent;
+    border-left: 50px solid green;
+    border-bottom: 50px solid transparent;
+    position: absolute;
+   
+}
+.triangle-r{
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-bottom: 50px solid red;
+    border-right: 50px solid transparent;
+    position: absolute;
+    bottom: 0;
+    
+}
+.triangle-b{
+    width: 0;
+    height: 0;
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-right: 50px solid blue;
+    position: absolute;
+    right: 0;
+    
+}
+.triangle-y{
+    width: 0;
+    height: 0;
+    border-top: 50px solid yellow;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    position: absolute;
+   top: 0;
+}
+
+.BOX2{background-color: burlywood;
+    display: flex;
+    flex: 1;
+    border: 2px solid black;
+}
+
+.dice{height: 100px;
+    width: 100px;
+    margin: 20px;
+    background-color: white;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+.dot {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin: -10px 5px 5px -10px;
+    border-radius: 20px;
+    background-color: #ef233c;
+    box-shadow: inset 2px 2px #d90429;
+}
+
+.dice-one {
+    left: 450px; 
+}
+
+  
+  .side {
+    position: absolute;
+    background-color: #ffF;
+    border-radius:5px;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #e5e5e5;
+    text-align: center;
+    line-height: 2em;
+  }
+  
+  .side:nth-child(1) {
+    transform: translateZ(3.1em); }
+  
+  .side:nth-child(6) {
+    transform: rotateY(90deg) translateZ(3.1em); }
+  
+  .side:nth-child(3) {
+    transform: rotateY(-90deg) translateZ(3.1em); }
+  
+  .side:nth-child(4) {
+    transform: rotateX(90deg) translateZ(3.1em); }
+  
+  .side:nth-child(5) {
+    transform: rotateX(-90deg) translateZ(3.1em); }
+  
+  .side:nth-child(2) {
+    transform: rotateY(-180deg) translateZ(3.1em); }
+  
+  .two-1, .three-1, .four-1, .five-1, .six-1 {
+    top: 20%;
+    left: 20%; }
+  
+  .four-3, .five-3, .six-4 {
+    top: 20%;
+    left: 80%; }
+  
+  .one-1, .three-2, .five-5 {
+    top: 50%;
+    left: 50%; }
+  
+  .four-2, .five-2, .six-3 {
+    top: 80%;
+    left: 20%; }
+  
+  .two-2, .three-3, .four-4, .five-4, .six-6 {
+    top: 80%;
+    left: 80%; }
+  
+  .six-2 {
+    top: 50%;
+    left: 20%; }
+  
+  .six-5 {
+    top: 50%;
+    left: 80%; 
+  }
+
+  .show-1 {
+    transform: rotateX(720deg) rotateZ(-720deg); }
+  
+  .show-2 {
+    transform: rotateX(-900deg) rotateZ(1080deg); }
+  
+  .show-6 {
+    transform: rotateY(-450deg) rotateZ(-1440deg); }
+  
+  .show-3 {
+    transform: rotateY(810deg) rotateZ(720deg); }
+  
+  .show-4 {
+    transform: rotateX(-810deg) rotateZ(-1080deg); }
+  
+  .show-5 {
+    transform: rotateX(450deg) rotateZ(-720deg); }
+
+.button-dice{
+    position: fixed;
+    top: 300px;
+    left: 975px;
+    border-radius: 10px;
+    background-color: orange;
+}
+
+.pg{
+  width: 50%;
+  display: block;
+  height: 50%;
+  
+  background: url("greenPawn.png");
+  background-size: contain;
+}
+
+.pg.active{
+animation-name: blink;
+animation-duration: 0.8s;
+animation-timing-function: linear;
+animation-iteration-count: infinite;
+}
+.py.active{
+animation-name: blink;
+animation-duration: 0.8s;
+animation-timing-function: linear;
+animation-iteration-count: infinite;
+}
+.pr.active{
+animation-name: blink;
+animation-duration: 0.8s;
+animation-timing-function: linear;
+animation-iteration-count: infinite;
+}
+.pb.active{
+animation-name: blink;
+animation-duration: 0.8s;
+animation-timing-function: linear;
+animation-iteration-count: infinite;
+}
+
+.py{
+  width: 50%;
+  display: block;
+  height: 50%;
+  
+  background: url("yellowPawn.png");
+  background-size: contain;
+
+}
+
+.pb{
+  width: 50%;
+  display: block;
+  height: 50%;
+  
+  background: url("bluePawn.png");
+  background-size: contain;
+
+}
+
+.pr{
+  width: 50%;
+  display: block;
+  height: 50%;
+  
+  background: url("redPawn.png");
+  background-size: contain;
+
+}
+
+@keyframes blink{
+  0%{
+    filter: hue-rotate(0deg);
+  }
+  100%{
+    filter: hue-rotate(360deg);
+  }
+}
+
+#chance{
+  position: absolute;
+  top: 40%;
+  right:10%;
+  width: fit-content;
+  height: fit-content;
+  padding: 10px;
+  background-color: #fd82ca;
+  color: rgb(10, 10, 10);
+  border-radius: 10px;
+}
+
+#ranking{
+  position: absolute;
+  top:70%;
+  right: 10%;
+  width: fit-content;
+  height: 200px;
+  background-color: #ef233c;
+  padding: 15px;
+}
+
+#rankingHead{
+  width: 100%;
+  font-size: 2rem;
+  background-color: aqua;
+  padding: 5px;
+}
+.button-dice{
+  position: absolute;
+  top:50%;
+  right:10%;
+}
+
