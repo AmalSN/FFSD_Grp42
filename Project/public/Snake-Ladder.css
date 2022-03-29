@@ -202,7 +202,6 @@ canvas{
 .piece img{
   width: 18px;
   height: 18px;
-  transition: all .5s ease-in-out;
 }
 
 .red-piece-color {
@@ -243,9 +242,93 @@ canvas{
   transform: rotate(-25deg);
 }
 #snake2{
-left: 57%;
-width: 20%;
-top: 45%;
-height:22%;
-transform: rotate(+34deg);
+  width: 17%;
+  top: 35%;
+  left: 42%;
+  transform: rotate(75deg);
+  height: 40%;
+}
+#snake3{
+  width: 17%;
+  /* top: 35%; */
+  left: 42%;
+  transform: rotate(88deg);
+  height: 29%;
+  top: 57%;
+}
+#snake4{
+  width: 17%;
+    top: 32%;
+    left: 9%;
+    transform: rotate(16deg);
+    height: 54%;
+}
+#snake5{
+  width: 17%;
+    top: 10%;
+    left: 60%;
+    transform: rotate(105deg);
+    height: 54%;
+}
+#snake6{
+  width: 25%;
+    top: 8%;
+    left: 63%;
+    transform: rotate(-3deg);
+    height: 75%;
+}
+#snake7{
+  width: 18%;
+    top: -3%;
+    left: 71%;
+    transform: rotate(-34deg);
+    height: 28%;
+}
+#snake8 {
+  width: 23%;
+  top: 1%;
+  left: 10%;
+  transform: rotate(9deg);
+  height: 72%;
+}
+#ladder1 {
+  width: 17%;
+  top: 60%;
+  left: 10%;
+  transform: rotate(14deg);
+  height: 39%;
+}
+#ladder2 {
+  width: 18%;
+  top: 70%;
+  left: 41%;
+  transform: rotate(72deg);
+  height: 40%;
+}
+#ladder3 {
+  width: 18%;
+  top: 44%;
+  left: 70%;
+  transform: rotate(52deg);
+  height: 39%;
+}
+#ladder4 {
+  width: 16%;
+  top: 25%;
+  transform: rotate(1deg);
+  height: 51%;
+  left: 87%;
+}
+#ladder5 {
+  width: 21%;
+  height: 46%;
+  left: 44%;
+  transform: rotate(0deg);
+  top: 2%;
+}
+#ladder6 {
+  top: 12%;
+  width: 24%;
+  left: 23%;
+  height: 26%;
 }

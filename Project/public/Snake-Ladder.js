@@ -5,23 +5,21 @@ $(document).ready(function(){
 let boardBlockHTML = ``;
 let snakeList = [
   [17, 6],
-  [54, 34],
+  [34, 24],
+  [54, 37],
   [62, 19],
-  [64, 60],
-  [87, 36],
-  [93, 73],
-  [95, 75],
-  [98, 79]
+  [70, 65],
+  [87, 29],
+  [94, 90],
+  [99, 38]
 ]
 let ladderList = [
   [2, 38],
   [4, 14],
-  [9, 31],
-  [21, 42],
-  [28, 84],
-  [51, 67],
-  [72, 91],
-  [80, 99]
+  [27, 50],
+  [30, 71],
+  [55, 95],
+  [64, 84]
 ]
 let currentColor = "red";
 let colorNumbering = {
@@ -133,14 +131,12 @@ function changeColor(){
 function pieceMovement(pieceColor, spotsMoved){
   let pos = colorNumbering[pieceColor];
   if(playerPosition[pos] + spotsMoved <= 100){
-    let x = $(`.block${playerPosition[pos] + spotsMoved} .${pieceColor}-piece-color`).offset();
-    $(`.block${playerPosition[pos] + spotsMoved} .${pieceColor}-piece-color`).
     $(`.block${playerPosition[pos]} .${pieceColor}-piece-color`).html("");
     playerPosition[pos] += spotsMoved;
     $(`.block${playerPosition[pos]} .${pieceColor}-piece-color`).html(`<img src='/images/${pieceColor.toLowerCase()}Pawn.png'>`);
     
     for(let i = 0; i < snakeList.length; i++){
-      if(pos == snakeList[i][0]){
+      if(playerPosition[pos] == snakeList[i][0]){
         $(`.block${playerPosition[pos]} .${pieceColor}-piece-color`).html("");
         playerPosition[pos] = snakeList[i][1];
         $(`.block${playerPosition[pos]} .${pieceColor}-piece-color`).html(`<img src='/images/${pieceColor.toLowerCase()}Pawn.png'>`);
@@ -148,7 +144,7 @@ function pieceMovement(pieceColor, spotsMoved){
       }      
     }
     for(let i = 0; i < ladderList.length; i++){
-      if(pos == ladderList[i][0]){
+      if(playerPosition[pos] == ladderList[i][0]){
         $(`.block${playerPosition[pos]} .${pieceColor}-piece-color`).html("");
         playerPosition[pos] = ladderList[i][1];
         $(`.block${playerPosition[pos]} .${pieceColor}-piece-color`).html(`<img src='/images/${pieceColor.toLowerCase()}Pawn.png'>`);

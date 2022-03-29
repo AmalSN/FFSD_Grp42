@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ludo</title>
-    <link rel="stylesheet" href="../public/Ludo.css">
+    <link rel="stylesheet" href="/Ludo.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
-<body style="background-color: burlywood;">
+<body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid offset-md-4">
-            <a class="navbar-brand text-warning" href="#">Board Nights</a>
+            <a class="navbar-brand text-warning" href="/">Board Nights</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -23,7 +23,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -31,13 +31,9 @@
                             LeaderBoards
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Tic-Tac-Toe</a></li>
-                            <li><a class="dropdown-item" href="#">Snake and Ladder</a></li>
-                            <li><a class="dropdown-item" href="#">Ludo</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Overall</a></li>
+                            <li><a class="dropdown-item" href="/leaderboard/tic-tac-toe">Tic-Tac-Toe</a></li>
+                            <li><a class="dropdown-item" href="/leaderboard/snake-ladder">Snake and Ladder</a></li>
+                            <li><a class="dropdown-item" href="/leaderboard/ludo">Ludo</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -49,48 +45,137 @@
                             <li><a class="dropdown-item" href="#">Tic-Tac-Toe</a></li>
                             <li><a class="dropdown-item" href="#">Snake and Ladder</a></li>
                             <li><a class="dropdown-item" href="#">Ludo</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Overall</a></li>
                         </ul>
                     </li>
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Login</a>
+                        <a class="nav-link" aria-current="page" href="/join-us/login">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Sign-Up</a>
+                        <a class="nav-link" aria-current="page" href="/join-us/signup">Sign-Up</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+    <div class="Page">
+        <!--page -->
+        <div class="BOX1">
+            <!--ludo portion -->
+            <div class="containerL">
+                <div class="container1">
+                    <div class="r1c1 green">
+                        <div class="r1c1c white">
+                            <div class="green"><span class="pg1 spg0 pg"></span></div>
+                            <div class="green"><span class="pg2 spg0 pg"></span></div>
+                            <div class="green"><span class="pg3 spg0 pg"></span></div>
+                            <div class="green"><span class="pg4 spg0 pg"></span></div>
+                        </div>
+                    </div>
+                    <div class="r1c2 path">
 
-    <div class="main-container container-fluid py-4">
-        <div class="row">
-            <div class="board-container col-6">
-                <div class="board">
-                    <div class="corner-block board-block" id="top-left"></div>
-                    <div class="movement-block movement-block-ver board-block" id="top-middle"></div>
-                    <div class="corner-block board-block" id="top-right"></div>
-                    <div class="movement-block movement-block-hor board-block" id="center-left"></div>
-                    <div class="center-block board-block" id="center-middle"></div>
-                    <div class="movement-block movement-block-hor board-block" id="center-right"></div>
-                    <div class="corner-block board-block" id="bottom-left"></div>
-                    <div class="movement-block movement-block-ver board-block" id="bottom-middle"></div>
-                    <div class="corner-block board-block" id="bottom-right"></div>
+                    </div>
+                    <div class="r1c3 yellow">
+                        <div class="r1c3c white">
+                            <div class="yellow"><span class="py1 spy0 py"></span></div>
+                            <div class="yellow"><span class="py2 spy0 py"></span></div>
+                            <div class="yellow"><span class="py3 spy0 py"></span></div>
+                            <div class="yellow"><span class="py4 spy0 py"></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container2">
+                    <div class="r2c1 path"></div>
+                    <div class="r2c2">
+                        <div class="triangle home ">
+                            <div class="triangle-g g57"></div>
+                            <div class="triangle-r r57"></div>
+                            <div class="triangle-b b57"></div>
+                            <div class="triangle-y y57"></div>
+                        </div>
+                    </div>
+                    <div class="r2c3 path"></div>
+                </div>
+                <div class="container3">
+                    <div class="r3c1 red">
+                        <div class="r3c1c white">
+                            <div class="red"><span class="pr1 spr0 pr"></span></div>
+                            <div class="red"><span class="pr2 spr0 pr"></span></div>
+                            <div class="red"><span class="pr3 spr0 pr"></span></div>
+                            <div class="red"><span class="pr4 spr0 pr"></span></div>
+                        </div>
+                    </div>
+                    <div class="r3c2 path"></div>
+                    <div class="r3c3 blue">
+                        <div class="r3c3c white">
+                            <div class="blue"><span class="pg1 spb0 pb"></span></div>
+                            <div class="blue"><span class="pg2 spb0 pb"></span></div>
+                            <div class="blue"><span class="pg3 spb0 pb"></span></div>
+                            <div class="blue"><span class="pb4 spb0 pb"></span></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="dice-container col-6">
+
 
         </div>
+        <div class="BOX2">
+            <div class="row">
+                <div class="col-4"></div>
+                <div id='roll' class="roll">
+                    <button id="dice-btn" class="button-dice">Roll dice!</button>
+                </div>
+            </div>
+            <!--Dice portion -->
+            <div class="dice offset-md-3" id="dice1" style="width: 100px;height: 100px;">
+                <div id="dice-one-side-one" class='side one'>
+                    <div class="dot one-1"></div>
+                </div>
+                <div id="dice-one-side-two" class='side two'>
+                    <div class="dot two-1"></div>
+                    <div class="dot two-2"></div>
+                </div>
+                <div id="dice-one-side-three" class='side three'>
+                    <div class="dot three-1"></div>
+                    <div class="dot three-2"></div>
+                    <div class="dot three-3"></div>
+                </div>
+                <div id="dice-one-side-four" class='side four'>
+                    <div class="dot four-1"></div>
+                    <div class="dot four-2"></div>
+                    <div class="dot four-3"></div>
+                    <div class="dot four-4"></div>
+                </div>
+                <div id="dice-one-side-five" class='side five'>
+                    <div class="dot five-1"></div>
+                    <div class="dot five-2"></div>
+                    <div class="dot five-3"></div>
+                    <div class="dot five-4"></div>
+                    <div class="dot five-5"></div>
+                </div>
+                <div id="dice-one-side-six" class='side six'>
+                    <div class="dot six-1"></div>
+                    <div class="dot six-2"></div>
+                    <div class="dot six-3"></div>
+                    <div class="dot six-4"></div>
+                    <div class="dot six-5"></div>
+                    <div class="dot six-6"></div>
+
+                </div>
+                
+            </div>
+            
+
+        </div>
+        
+        <span id="chance">
+            Chance of - Green
+        </span>
+        
     </div>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="../public/Ludo.js"></script>
+    <script src="/Ludo.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>

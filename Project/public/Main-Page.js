@@ -5,3 +5,9 @@ function playGame(){
     else game = "ludo"; 
     location.href = "/games/" + game;
 }
+function userSettings(){
+    location.href = "/join-us/user";
+}
+function contactUs(){
+    location.href = "/contact-us";
+}
