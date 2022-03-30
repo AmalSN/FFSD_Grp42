@@ -1,0 +1,94 @@
+.cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body {
+    height: 100vh;
+    
+    background-color: aqua;
+}
+
+.main {
+    
+    margin: 50px;
+    background-color: black;
+    height: 500px;
+    width: 500px;
+}
+
+.one {
+    display: flex;
+    justify-content: center;
+    /* margin: 50px;
+    background-color: black;
+    height: 500px;
+    width: 500px; */
+    /* flex: 1; */
+    margin-top: 40px;
+    /* margin-left: 40px; */
+
+}
+
+.ttt {
+    cursor: pointer;
+    /* background-color: aliceblue; */
+}
+
+.sl {
+    cursor: pointer;
+    /* background-color: aliceblue; */
+}
+
+.ld {
+    cursor: pointer;
+    /* background-color: aliceblue; */
+}
+
+button {
+    margin: 9px;
+}
+
+.board {
+    margin: 10px;
+    border-radius: 10px;
+    background-color: aliceblue;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 9px;
+}
+
+
+.brown-color{
+background-color: burlywood;
+}
+
+.font-special{
+font-size: 5rem;
+/* color: rgb(114, 21, 21); */
+color: brown;
+font-family: 'Pacifico', cursive;
+}
+
+.carousel {
+width: 40vw;  /*500*/
+height: 70vh;  /*400*/
+}
+
+.img-change{
+height: 70vh;
+}
+
+.box-transparent{
+opacity: 0.8;
+}
