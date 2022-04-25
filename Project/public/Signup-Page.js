@@ -1,4 +1,5 @@
 function check(){
+    // let username = $("#u")?\
     let email = $("#email").val();
     let password = $("#password").val();
     let confirmPassword = $("#passwordConfirm").val();

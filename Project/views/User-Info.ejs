@@ -22,7 +22,6 @@
                                 aria-controls="home" aria-selected="false">Profile</a>
                         </li>
                     </ul>
-                    <form>
                         <div class="row mt-5 align-items-center">
                             <div class="col-md-3 text-center mb-5">
                                 <div class="avatar avatar-xl">
@@ -51,34 +50,35 @@
                             </div>
                         </div>
                         <hr class="my-4" />
+                    <form action="/join-us/userValidation" method="POST">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="firstname">Firstname</label>
-                                <input type="text" id="firstname" class="form-control" placeholder="Nik" />
+                                <input type="text" id="firstname" class="form-control" name="fName" placeholder="Nik" />
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="lastname">Lastname</label>
-                                <input type="text" id="lastname" class="form-control" placeholder="Jadhav" />
+                                <input type="text" id="lastname" class="form-control" name="lName" placeholder="Jadhav" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail4">Email</label>
-                            <input type="email" class="form-control" id="inputEmail4" placeholder="nik@jdv.me" />
+                            <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="nik@jdv.me" />
                         </div>
                         <hr class="my-4" />
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="inputPassword4">Old Password</label>
-                                    <input type="password" class="form-control" id="inputPassword5" />
+                                    <input type="password" class="form-control" id="inputPassword5" name="oldPassword"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword5">New Password</label>
-                                    <input type="password" class="form-control" id="inputPassword5" />
+                                    <input type="password" class="form-control" id="inputPassword5" name="password"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword6">Confirm Password</label>
-                                    <input type="password" class="form-control" id="inputPassword6" />
+                                    <input type="password" class="form-control" id="inputPassword6" name="confirmPassword"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -94,7 +94,9 @@
                             </div>
                             <div class="container">
                                 <button type="button" class="btn btn-primary">Submit</button>
-                            </div>        
+                            </div>
+                    </form>
+                            <script src="/User-Info.js"></script>     
                         </body>
 
 </html>

@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const User = require("../model/userDetails.js");
 const Stat = require("../model/statDetails.js");
+const { resolve } = require("path");
 
 const router = express.Router();
 
@@ -67,6 +68,29 @@ router.get("/signup", (req, res) => {
         username: req.query.un,
         loggedUser: req.session.loggedUser
     });
+});
+
+router.get("/userValidation", (req, res) => {
+    new Promise((resolve) => {
+        User.findOne({uName: req.body.uName}, (err, docs) => {
+            if(err)return console.log(err);
+            resolve(docs);
+        })
+    }).then(
+        (doc) => {
+            if(doc.password == req.body.password){
+                if(req.body.fName.length!=0) doc.fName = req.body.fName;
+                if(req.body.lName.length!=0) doc.lName = req.body.lName;
+                if(req.body.email.length!=0) doc.email = req.body.email;
+                if(req.body.password.length!=0 && req.body.confirmPassword) doc.password = req.body.password;
+                doc.save();
+                res.redirect("/join-us/user?")
+            }
+            else{
+                res.redirect("/join-us/user?check=1");
+            }
+        }
+    );
 });
 
 router.get("/user", (req, res) => {
