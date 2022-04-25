@@ -70,21 +70,21 @@ router.get("/signup", (req, res) => {
     });
 });
 
-router.get("/userValidation", (req, res) => {
+router.post("/userValidation", (req, res) => {
     new Promise((resolve) => {
-        User.findOne({uName: req.body.uName}, (err, docs) => {
+        User.findOne({uName: req.session.loggedUser}, (err, docs) => {
             if(err)return console.log(err);
             resolve(docs);
         })
     }).then(
         (doc) => {
-            if(doc.password == req.body.password){
+            if(doc.password == req.body.oldPassword){
                 if(req.body.fName.length!=0) doc.fName = req.body.fName;
                 if(req.body.lName.length!=0) doc.lName = req.body.lName;
                 if(req.body.email.length!=0) doc.email = req.body.email;
-                if(req.body.password.length!=0 && req.body.confirmPassword) doc.password = req.body.password;
+                if(req.body.password.length!=0 && req.body.password == req.body.confirmPassword) doc.password = req.body.password;
                 doc.save();
-                res.redirect("/join-us/user?")
+                res.redirect("/join-us/user")
             }
             else{
                 res.redirect("/join-us/user?check=1");
@@ -94,9 +94,23 @@ router.get("/userValidation", (req, res) => {
 });
 
 router.get("/user", (req, res) => {
-    res.render("User-Info",{
-        loggedUser: req.session.loggedUser
-    });
+    new Promise((resolve) => {
+        User.findOne({uName: req.session.loggedUser}, (err, docs) => {
+            if(err)return console.log(err);
+            resolve(docs);
+        })
+    }).then(
+        (doc) => {
+            res.render("User-Info",{
+                check: Number(req.query.check),
+                loggedUser: req.session.loggedUser,
+                fName: doc.fName,
+                lName: doc.lName,
+                email: doc.email
+            });
+        }
+    )
+    
 });
 
 router.post("/loginCheck", (req, res) => {

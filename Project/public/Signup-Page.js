@@ -1,13 +1,13 @@
 function check(){
-    // let username = $("#u")?\
+    let username = $("#uName").val();
     let email = $("#email").val();
     let password = $("#password").val();
     let confirmPassword = $("#passwordConfirm").val();
-    if(password == confirmPassword && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
+    if(username.length >= 6 && password.length >= 6 && password == confirmPassword && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
         $("#signup-button").removeAttr("disabled");
     }
     else {
-        $("#signup-button").prop("disabled",true);
+        $("#signup-button").prop("disabled", true);
     }
 }
 

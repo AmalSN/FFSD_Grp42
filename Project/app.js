@@ -2,14 +2,17 @@ const path = require("path");
 
 const express = require("express");
 const session = require("express-session");
+const bodyParser = require("body-parser");
 
 const gameRoutes = require("./routes/games.js");
 const joinRoutes = require("./routes/join-us.js");
-const leaderboardRoutes = require("./routes/leaderboard.js");
+const nodemailer = require("nodemailer");
 const Stat = require("./model/statDetails.js");
 const { userInfo } = require("os");
 
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 const server = require("http").createServer(app);
 const socketIO= require("socket.io");
@@ -29,11 +32,30 @@ app.use("/games", gameRoutes);
 
 app.use("/join-us", joinRoutes);
 
-app.use("/leaderboard", leaderboardRoutes);
-
 app.get("/contact-us", (req, res) => {
     res.render("Contact-Us",{
         loggedUser: req.session.loggedUser
+    });
+});
+
+app.post("/sendMail", (req, res) => {
+    var transporter = nodemailer.createTransport({
+        service: "Gmail",
+        auth: {
+            user: "amalsn014916@gmail.com",
+            pass: "amalsn123"
+        }
+    });
+    var mailOptions = {
+        from: "amalsn014916@gmail.com",
+        to: "amalsn014916@gmail.com",
+        subject: "Issue",
+        text: "Message from: " + req.body.email +"\nIssue: " + req.body.message
+    };
+    transporter.sendMail(mailOptions, function(err, info){
+        if(err)console.log(err);
+        else console.log("sent");
+        res.redirect("/contact-us");
     });
 });
 
