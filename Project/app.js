@@ -50,7 +50,7 @@ app.post("/sendMail", (req, res) => {
         from: "amalsn014916@gmail.com",
         to: "amalsn014916@gmail.com",
         subject: "Issue",
-        text: "Name: " + req.body.name + "Message from: " + req.body.email +"\nIssue: " + req.body.message
+        text: "Name: " + req.body.name + "\nMessage from: " + req.body.email +"\nIssue: " + req.body.message
     };
     transporter.sendMail(mailOptions, function(err, info){
         if(err)console.log(err);
