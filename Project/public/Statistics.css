@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
 
 body {
-  background-image: url(/images/black.jpg);
+  background-image:url(/images/new.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
   font-family: 'Lobster', cursive;
@@ -15,9 +15,11 @@ h1 {
 
 .accordion {
   width: 800px;
-  margin: 90px auto;
-  color: rgb(206, 238, 238);
-  background-image: url(/images/bg.webp);
+  margin: 10px auto;
+  color: rgb(229, 129, 15);
+  background-image: url(/images/new3.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
   padding: 45px 45px;
 }
 
@@ -28,15 +30,15 @@ h1 {
     
 .accordion .label {
     position: relative;
-    padding: 10px 0;
+    padding: 8px 8px;
     font-size: 30px;
-    color: rgb(228, 88, 88);
+    color: rgb(229, 25, 151);
     cursor: pointer;
   }
 
 .accordion .label::before {
     content: '+';
-    color: rgb(228, 88, 88);
+    color: rgb(228, 52, 178);
     position: absolute;
     top: 50%;
     right: -5px;
@@ -46,9 +48,6 @@ h1 {
   
 .accordion .content {
     position: relative;
-    background-image: url(/images/download.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
     height: 0;
     font-size: 20px;
     text-align: justify;
