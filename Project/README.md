@@ -22,5 +22,7 @@ Then code should be "const socket = io("http://10.0.0.8:3000)"
 Run using "node app.js"
 
 Then go to "localhost:3000" on your browser to see the application.
+You will have to SignUp and create an account to access the features.
+To play games you will have to ask your friends to create accounts too.
 
 Github Repo: https://github.com/AmalSN/FFSD_Grp42
