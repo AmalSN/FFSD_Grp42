@@ -27,7 +27,7 @@ let colorNumbering = {
 };
 let playerPosition = [1, 1, 1, 1];
 
-const socket = io("http://192.168.211.245:3000");
+const socket = io("http://10.0.43.46:3000");
 
 socket.on("connection");
 
