@@ -1,8 +1,5 @@
-$(document).ready(function(){
-  $("#choose-colors").modal("show");
-});
-
 let boardBlockHTML = ``;
+let turnOrder = 0;
 let snakeList = [
   [17, 6],
   [34, 24],
@@ -29,8 +26,47 @@ let colorNumbering = {
   "green": 3
 };
 let playerPosition = [1, 1, 1, 1];
-let elDiceOne       = document.getElementById('dice1');
-let elComeOut       = document.getElementById('roll');
+
+const socket = io("http://192.168.211.245:3000");
+
+socket.on("connection");
+
+let url = window.location.href;
+let roomNum = url.slice(url.indexOf("=")+1);
+socket.emit("createRoomS", roomNum);
+
+socket.on("moveS", (data) => {
+  
+  for(let i = 0; i < 4; i++){
+    if(playerPosition[i]!=data.x[i]){
+      $(`.block${playerPosition[i]} .${currentColor}-piece-color`).html("");
+      $(`.block${data.x[i]} .${currentColor}-piece-color`).html(`<img src='/images/${currentColor.toLowerCase()}Pawn.png'>`);
+      playerPosition[i]=data.x[i];
+    }
+  }
+  if((data.y+1)%4 == turnOrder){
+    $("#freezeScreen").removeClass("freezeScreen");
+  }
+  changeColor();
+
+});
+
+socket.on("turnOrder", (data) => {
+  console.log(turnOrder);
+  turnOrder = data;
+});
+
+socket.on("freezeScreenS", () => {
+  $("#freezeScreen").addClass("freezeScreen");
+});
+
+socket.on("winS", (data) => {
+  $(".winner-text").text(data[0].toUpperCase()+data.slice(1)+" wins!!");
+  socket.emit("lossS",$("#loggedUser").text().slice(25,-21));
+})
+
+let elDiceOne = document.getElementById('dice1');
+let elComeOut = document.getElementById('roll');
 
 elComeOut.onclick   = function () {rollDice();};
 
@@ -153,7 +189,12 @@ function pieceMovement(pieceColor, spotsMoved){
     }
     if(playerPosition[pos] == 100){
       $(".winner-text").text(currentColor[0].toUpperCase()+currentColor.slice(1)+" wins!!");
+      socket.emit("winS", {x: currentColor, y: $("#loggedUser").text().slice(25,-21)});
       on();
+    }
+    else{
+      console.log(turnOrder);
+      socket.emit("moveS", {x: playerPosition, y: turnOrder});
     }
   }
   changeColor();

@@ -5,15 +5,15 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/tic-tac-toe", (req, res) => {
-    res.sendFile(path.join(__dirname, "..", "views", "TicTacToe-Leaderboard.html"));
+    res.render("TicTacToe-Leaderboard");
 });
 
 router.get("/snake-ladder", (req, res) => {
-    res.sendFile(path.join(__dirname, "..", "views", "Snake-Ladder-Leaderboard.html"));
+    res.render("Snake-Ladder-Leaderboard");
 });
 
 router.get("/ludo", (req, res) => {
-    res.sendFile(path.join(__dirname, "..", "views", "Ludo-Leaderboard.html"));
+    res.render("Ludo-Leaderboard");
 });
 
 module.exports = router;

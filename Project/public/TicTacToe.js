@@ -1,5 +1,4 @@
 //-------------------------------------------------------------------------------------------------
-
 let blockNumbering = {
     "block-top-left": 0,
     "block-top-middle": 1,
@@ -16,6 +15,50 @@ console.log("Working");
 let blockSymbol = ["","","","","","","","",""];
 let currentSymbol = "X";
 
+const socket = io("http://192.168.211.245:3000");
+
+socket.on("connection");
+
+let url = window.location.href;
+let roomNum = url.slice(url.indexOf("=")+1);
+socket.emit("createRoomT", roomNum);
+
+socket.on("reloadT", () => {
+    location.reload();
+});
+
+socket.on("freezeScreenT", () => {
+    $("#freezeScreen").addClass("freezeScreen");
+});
+
+socket.on("moveT", (data) => {
+    blockSymbol = data.x;
+    currentSymbol = data.y;
+    for(let i = 0; i < 9; i++){
+        let t = document.querySelectorAll(".block")[i];
+        t.innerText = blockSymbol[i];
+        if(t.innerText != ""){
+            t.classList.add("occupied");
+        }
+    }
+    $("#freezeScreen").removeClass("freezeScreen");
+});
+
+socket.on("drawT", () => {
+    drawTheGame();
+});
+
+socket.on("winT", (currentSymbol) => {
+    $(".winner-text").text("Player " + currentSymbol.x + " Wins!!");
+    on();
+    console.log(currentSymbol.x + " Won");
+    socket.emit("lossT",$("#loggedUser").text().slice(25,-21));
+});
+
+$("#blockDiv").click(function(e) {
+    return false;
+});
+
 $(".block").click(function(){
     if(!($(this).hasClass("occupied"))){
         $(this).text(currentSymbol);
@@ -26,17 +69,16 @@ $(".block").click(function(){
             $(".winner-text").text("Player " + currentSymbol + " Wins!!");
             on();
             console.log(currentSymbol + " Won");
+            socket.emit("winT", {x: currentSymbol, y: $("#loggedUser").text().slice(25,-21)});
         }
         else if(boardDraw(blockSymbol)){
-            $(".winner-text").text("Draw!!");
-            on();
-            console.log("Draw");
-        }
-        if(currentSymbol == "X"){
-            currentSymbol = "O";
+            drawTheGame();
+            socket.emit("drawT");
         }
         else{
-            currentSymbol = "X";
+            if(currentSymbol == "X")currentSymbol="O";
+            else currentSymbol="X";
+            socket.emit("moveT", {x: blockSymbol, y: currentSymbol});
         }
     }    
 });
@@ -77,6 +119,13 @@ function resetBoard() {
     blockSymbol = ["","","","","","","","",""];
     $(".block").removeClass("occupied");
     $(".block").text("");
+    socket.emit("reloadT");
+}
+
+function drawTheGame() {
+    $(".winner-text").text("Draw!!");
+    on();
+    console.log("Draw");
 }
 
 function off() {

@@ -3,124 +3,101 @@ const url = require("url");
 
 const express = require("express");
 const bodyParser = require("body-parser");
-const sqlite3 = require("sqlite3").verbose();
+const mongoose = require("mongoose");
+const User = require("../model/userDetails.js");
+const Stat = require("../model/statDetails.js");
 
 const router = express.Router();
 
-const db_name = path.join(__dirname, "..", "data", "userDetails.db");
-const db = new sqlite3.Database(db_name, e => {
-    if (e) {
-        return console.log(e.message);
-    }
-});
-
-const createTable = `
-    create table if not exists users(
-    uName varchar(50) primary key,
-    password varchar(50) not null,
-    email varchar(50) not null,
-    fName varchar(50) not null,
-    lName varchar(50) not null,
-    age integer,
-    gender varchar(6)
-);`;
-
-db.run(createTable, e => {
-    if(e){
-        return console.error(e.message);
-    }
-});
-
 router.use(bodyParser.urlencoded({ extended: false }));
+
+const connectionString = "mongodb+srv://amalsn:amal123@ffsd42.qhbl5.mongodb.net/Proj42?retryWrites=true&w=majority";
+
+mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, client){
+    if(err)console.log(err);
+    console.log("connected");
+});
 
 router.get("/login", (req, res) => {
     res.render("Login-Page.ejs", {
         usernameCheck: Number(req.query.unCheck),
+        loggedUser: req.session.loggedUser
     });
 });
 
 router.post("/login", (req, res) => {
-    
-    const checkElementExists = `
-    select uName from users;
-    `;
-    const insertElement = `
-    insert into users values
-    ("${req.body.uName}","${req.body.password}","${req.body.email}","${req.body.fName}",
-        "${req.body.lName}",${Number(req.body.age)},"${req.body.gender}");
-    `;
-    
-    let promise = new Promise((resolve, reject) => {
-        db.all(checkElementExists, [], (e, rows) => {
-            if(e)console.error(e.message);
-            let checkFlag = 0
-            rows.forEach(row => {
-                    if(row.uName == req.body.uName){
-                        checkFlag = 1;
-                    }
-            });
-            if(!checkFlag)resolve(req.body.uName);
-            else reject(req.body.uName);
+
+    new Promise((resolve, reject) => {
+        User.findOne({uName: req.body.uName},(err, docs) => {
+            if(err)console.log(err);
+            else if(docs == null){
+                resolve();
+            }
+            else reject();
         });
+    }).then(() => {
+        let newUser = new User({
+            uName: req.body.uName,
+            password: req.body.password,
+            email: req.body.email,
+            fName: req.body.fName,
+            lName: req.body.lName,
+            age: Number(req.body.age),
+            gender: req.body.gender
+        });
+        let newStat = new Stat({
+            uName: req.body.uName,
+            played: [0,0,0],
+            wins: [0,0,0],
+            losses: [0,0,0]
+        });
+        console.log((newUser));
+        newUser.save();
+        newStat.save();
+        res.redirect("/join-us/login");
+    },
+    () => {
+            res.redirect(`/join-us/signup?unCheck=1&un=${req.body.uName}`);
     });
-
-    promise.then(
-        (x) => {
-            db.run(insertElement, e => {
-                if(e){
-                    return console.error(e.message);
-                }
-                console.log(x, "inserted");
-                res.render("Login-Page.ejs", {
-                    usernameCheck: Number(req.query.unCheck),
-                });
-            });
-        },
-        (x) => {
-            console.log(x, "already exists");
-            res.redirect("/join-us/signup?unCheck=1&un="+x);
-        }
-    );
-
 });
 
 router.get("/signup", (req, res) => {
     res.render("Signup-Page.ejs", {
         usernameCheck: Number(req.query.unCheck),
-        username: req.query.un
+        username: req.query.un,
+        loggedUser: req.session.loggedUser
     });
 });
 
 router.get("/user", (req, res) => {
-    res.sendFile(path.join(__dirname, "..", "views", "User-Info.html"));
+    res.render("User-Info",{
+        loggedUser: req.session.loggedUser
+    });
 });
 
 router.post("/loginCheck", (req, res) => {
-    const checkElementExists = `
-    select uName,password from users;
-    `;
-    
-    let promise = new Promise((resolve, reject) => {
-        db.all(checkElementExists, [], (e, rows) => {
-            if(e)console.error(e.message);
-            let checkFlag = 0;
-            rows.forEach(row => {
-                    if(row.uName == req.body.uName){
-                        if(row.password == req.body.password)checkFlag = 1;
-                    }
-            });
-            if(checkFlag)resolve();
-            else reject();
+
+    new Promise((resolve, reject) => {
+        User.findOne({uName: req.body.uName, password: req.body.password}, (err, docs) => {
+            if(err)console.log(err);
+            else if(docs == null){
+                reject();
+            }
+            else resolve();
         });
-    });
-    promise.then(
+    }).then(
         () => {
+            req.session.loggedUser = req.body.uName;
             res.redirect("/");
         },
-        () => {
-            res.redirect("/join-us/login?unCheck=1");
-        }
+        () => res.redirect("/join-us/login?unCheck=1")
     );
+
 });
 
-module.exports = router;
+router.get("/logout", (req, res) => {
+    req.session.loggedUser = undefined;
+    res.redirect("/");
+})
+
+module.exports= router;

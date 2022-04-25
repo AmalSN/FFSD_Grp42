@@ -1,6 +1,42 @@
 let ele = document.querySelector(".r1c2");
 let htmlCode = ``;
 let cnt = 1;
+let turnOrder = 0;
+
+const socket = io("http://192.168.211.245:3000");
+
+socket.on("connection");
+
+let url = window.location.href;
+let roomNum = url.slice(url.indexOf("=")+1);
+socket.emit("createRoomL", roomNum);
+
+socket.on("turnOrder", (data) => {
+    turnOrder = data;
+  });
+
+  socket.on("moveL", (data) => {
+    document.querySelector(".Page").innerHTML = data.x;
+      if((data.y+1)%4 == turnOrder){
+        document.querySelector("#freezeScreen").classList.remove("freezeScreen");
+      }
+    elDiceOne = document.getElementById('dice1');
+    elDiceTwo = document.getElementById('dice2');
+    allGreen=document.getElementsByClassName("pg");
+    allYellow=document.getElementsByClassName("py");
+    allRed=document.getElementsByClassName("pr");
+    allBlue=document.getElementsByClassName("pb");
+    chanceText=document.getElementById("chance");
+    rankDiv=document.getElementById("ranking");
+    rollbtn=document.getElementById("dice-btn");
+    document.querySelector("#dice-btn").addEventListener("click", rollDice);
+    incrementChance();
+  });
+
+  socket.on("freezeScreenL", () => {
+      document.querySelector("#freezeScreen").classList.add("freezeScreen");
+  });
+
 for (let i = 0; i < 6; i++) {
     for (let j = 0; j < 3; j++) {
         if (cnt == 14 || cnt == 17 || cnt == 11 || cnt == 8 || cnt == 5 || cnt == 6 || cnt == 7) {
@@ -11,7 +47,6 @@ for (let i = 0; i < 6; i++) {
     }
 }
 ele.innerHTML = htmlCode;
-
 
 let ele1 = document.querySelector(".r3c2");
 let htmlCode1 = ``;
@@ -61,7 +96,8 @@ let elComeOut = document.getElementById('roll');
 
 let chance=0;
 let chanceArray={0:'g',1:'y',2:'b',3:'r'};
-elComeOut.onclick = function () { rollDice(); };
+document.querySelector("#dice-btn").addEventListener("click", rollDice);
+// elComeOut.onclick = function () { rollDice(); };
 
 let diceOne;
 let playerSize=4;
@@ -94,6 +130,7 @@ function incrementChance(){
 }
 
 function rollDice() {
+    console.log("rolled");  
    rollbtn.style.display="none";
     if(chance==0){
        
@@ -168,6 +205,9 @@ function rollDice() {
 
 function move(e){
 
+    let flag = 0;
+
+    console.log(e.target);
     let player=e.target;
     let home=document.querySelector(`.${colour}57`);
     let currClass=player.classList[1];
@@ -262,6 +302,7 @@ function move(e){
     }
     
    else if((Number(currPos)+diceOne)<57){
+       flag=1;
     player.classList.remove(currClass);
     let newPos=Number(currPos)+diceOne;
     console.log(newPos);
@@ -292,6 +333,9 @@ function move(e){
     chanceText.textContent="Chance of Red";
    }
    rollbtn.style.display="inline-block";
+   if(flag==1){
+    socket.emit("moveL",{x: document.querySelector(".Page").innerHTML, y: turnOrder});
+   }
 }
 
 document.querySelector("#r3c213").classList.add("ab1", "r1", "b14", "y27", "g40")

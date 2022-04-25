@@ -138,3 +138,12 @@ PERCENTAGE TO REM: 1%=0.01REM
     background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
     text-decoration: none;
   }
+
+  .freezeScreen {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+}
