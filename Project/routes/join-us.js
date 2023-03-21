@@ -1,9 +1,11 @@
 const path = require("path");
 const url = require("url");
+const fs = require('fs')
 
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const multer = require("multer");
 const User = require("../model/userDetails.js");
 const Stat = require("../model/statDetails.js");
 const { resolve } = require("path");
@@ -18,6 +20,16 @@ mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: t
     if(err)console.log(err);
     console.log("connected");
 });
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, __dirname+'/../public/profilePic')
+    },
+    filename: function (req, file, cb) {
+      cb(null, `${req.session.loggedUser}.png`)
+    }
+})
+var upload = multer({ storage: storage })
 
 router.get("/login", (req, res) => {
     res.render("Login-Page.ejs", {
@@ -93,6 +105,10 @@ router.post("/userValidation", (req, res) => {
     );
 });
 
+router.post('/profile-upload-single', upload.single('profile-file'), function (req, res, next) {
+    res.send("success")
+  })
+
 router.get("/user", (req, res) => {
     new Promise((resolve) => {
         User.findOne({uName: req.session.loggedUser}, (err, docs) => {
@@ -101,9 +117,17 @@ router.get("/user", (req, res) => {
         })
     }).then(
         (doc) => {
+            let profPic;
+            if(!fs.existsSync(__dirname+`/../public/profilePic/${req.session.loggedUser}.png`)){
+                profPic = "/profilePic/default.png";
+            }
+            else{
+                profPic = `/profilePic/${req.session.loggedUser}.png`;
+            }
             res.render("User-Info",{
                 check: Number(req.query.check),
                 loggedUser: req.session.loggedUser,
+                profPic: profPic,
                 fName: doc.fName,
                 lName: doc.lName,
                 email: doc.email

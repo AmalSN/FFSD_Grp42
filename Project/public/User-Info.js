@@ -1,3 +1,5 @@
+
+
 $(document).ready(function () {
     $(".modal").modal('show');
 });
@@ -12,3 +14,4 @@ function check(){
         $("#submit").prop("disabled", true);
     }
 }
+

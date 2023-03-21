@@ -44,7 +44,7 @@
                         <div class="row mt-5 align-items-center">
                             <div class="col-md-3 text-center mb-5">
                                 <div class="avatar avatar-xl">
-                                    <!-- insert image here -->
+                                    <img src=<%= profPic %>>
                                 </div>
                             </div>
                             <div class="col">
@@ -68,6 +68,16 @@
                                 </div>
                             </div>
                         </div>
+                        <hr class="my-4" />
+                        <form method="POST" action="/join-us/profile-upload-single" enctype="multipart/form-data">
+                            <div>
+                                <label>Upload profile picture</label>
+                                <input type="file" name="profile-file" required/>
+                            </div>
+                            <div>
+                                <input type="submit" value="Upload" />
+                            </div>
+                        </form>
                         <hr class="my-4" />
                     <form action="/join-us/userValidation" method="POST">
                         <div class="form-row">
