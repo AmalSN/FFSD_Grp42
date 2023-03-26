@@ -1,6 +1,8 @@
 const path = require("path");
+const fs = require("fs")
 
 const express = require("express");
+const axios = require("axios");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 
@@ -8,6 +10,7 @@ const gameRoutes = require("./routes/games.js");
 const joinRoutes = require("./routes/join-us.js");
 const nodemailer = require("nodemailer");
 const Stat = require("./model/statDetails.js");
+const morgan = require("morgan");
 const { userInfo } = require("os");
 
 const app = express();
@@ -18,8 +21,12 @@ const server = require("http").createServer(app);
 const socketIO= require("socket.io");
 const io = socketIO(server, {cors: {origin: "*"}});
 
+const swaggerUi = require('swagger-ui-express')
+
 app.set("view engine", "ejs");
 app.set("views", "views");
+
+app.use(morgan("short"))
 
 app.use(session({
     secret: "secret-key",
@@ -27,6 +34,10 @@ app.use(session({
     saveUninitialized: false
 }));
 app.use(express.static(path.join(__dirname, "public")));
+
+const swaggerDocument = require('./swagger.json');
+
+app.use('/docs',swaggerUi.serve,swaggerUi.setup(swaggerDocument))
 
 app.use("/games", gameRoutes);
 
@@ -83,6 +94,69 @@ app.get("/statistics", (req,res) => {
             }
         )  
     }
+})
+
+app.get("/leaderboard/tic-tac-toe", (req, res) => {
+    axios.get('http://localhost:5000/tic-tac-toe').then(response => {
+        d = response.data
+        d = d.map(l => {
+            if(fs.existsSync("./public"+l.pic)){
+                return l;
+            }
+            else{
+                return {...l,pic: "/profilePic/default.png"}
+            }
+        })
+        console.log(d)
+        res.render("leaderboard",{
+            loggedUser: req.session.loggedUser,
+            w: d
+        })
+    }).catch(error => {
+        console.log(error);
+    })
+})
+
+app.get("/leaderboard/snake-ladder", (req, res) => {
+    axios.get('http://localhost:5000/snake-ladder').then(response => {
+        d = response.data
+        d = d.map(l => {
+            if(fs.existsSync("./public"+l.pic)){
+                return l;
+            }
+            else{
+                return {...l,pic: "/profilePic/default.png"}
+            }
+        })
+        console.log(d)
+        res.render("leaderboard",{
+            loggedUser: req.session.loggedUser,
+            w: d
+        })
+    }).catch(error => {
+        console.log(error);
+    })
+})
+
+app.get("/leaderboard/ludo", (req, res) => {
+    axios.get('http://localhost:5000/ludo').then(response => {
+        d = response.data
+        d = d.map(l => {
+            if(fs.existsSync("./public"+l.pic)){
+                return l;
+            }
+            else{
+                return {...l,pic: "/profilePic/default.png"}
+            }
+        })
+        console.log(d)
+        res.render("leaderboard",{
+            loggedUser: req.session.loggedUser,
+            w: d
+        })
+    }).catch(error => {
+        console.log(error);
+    })
 })
 
 app.get("/", (req, res) => {
