@@ -9,14 +9,13 @@
         }
     },
     "schemes": ["http"],
-    "host": "localhost:3080",
-    "basePath": "/api",
+    "host": "localhost:5000",
     "paths" : {
-        "/todos" : {
+        "/tic-tac-toe" : {
             "get" : {
-                "summary" : "Get all the tasks",
-                "description": "Get all the tasks",
-                "produces": ["application/json"],
+                "summary" : "Tic Tac Toe Statistics",
+                "description": "Get all statistics related to tic tac toe",
+                "produces": ["/tic-tac-toe"],
                 "parameters": [],
                 "responses": {
                     "200": {
@@ -24,186 +23,133 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/todosResponse"
+                                "$ref": "/tic-tac-toe"
                             }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
                         }
                     }
                 }
             }
         },
-        "/todo" : {
+        "/snake-ladder" : {
+            "get" : {
+                "summary" : "Snake and Ladder Statistics",
+                "description": "Get all statistics related to snake and ladder",
+                "produces": ["/snake-ladder"],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "/snake-ladder"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/ludo" : {
+            "get" : {
+                "summary" : "Ludo Statistics",
+                "description": "Get all statistics related to ludo",
+                "produces": ["/ludo"],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "/ludo"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "summary" : "All user stats",
+                "description": "Print all user stats and usernames",
+                "produces": ["/users"],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "/users"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/delete-user" : {
             "post" : {
-                "summary" : "Save the task",
-                "description": "Save the task",
-                "produces": ["application/json"],
-                "consumes": ["application/json"],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "task object",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "task" : {
-                                    "type": "object",
-                                    "$ref": "#/definitions/Task"
-                                } 
-                            }
-                        }
-                    }
-                ],
+                "summary" : "Delete a user",
+                "description": "Get all statistics related to ludo",
+                "produces": ["/delete-user"],
+                "parameters": [{
+                    "name": "uName",
+                    "in": "body",
+                    "description": "The username of the user",
+                    "required": true,
+                    "type": "string"
+                }],
                 "responses": {
                     "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/todos/{id}" : {
-            "put" : {
-                "summary" : "Update the tasks",
-                "description": "Update the tasks",
-                "produces": ["application/json"],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "task id that needs to be deleted",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "task object",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "task" : {
-                                    "type": "object",
-                                    "$ref": "#/definitions/Task"
-                                } 
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/todo/{id}" : {
-            "delete" : {
-                "summary" : "Delete the task",
-                "description": "Delete the task",
-                "produces": ["application/json"],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "task id that needs to be deleted",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
+                        "description": "successful operation"
                     }
                 }
             }
         }
     }, 
     "definitions": {
-        "todosResponse": {
+        "userDetails": {
             "type": "object",
             "properties": {
-                "id": {
+                "uName": {
                      "type": "integer"
                 },
-                "task": {
+                "password": {
                     "type": "string"
                 },
-                "assignee": {
+                "email": {
                     "type": "string"
                 },
-                "status": {
+                "fName": {
+                    "type": "string"
+                },
+                "lName": {
+                    "type": "string"
+                },
+                "age": {
+                    "type": "integer"
+                },
+                "gender": {
                     "type": "string"
                 }
             }
         },
-        "Task": {
+        "statDetails": {
             "type": "object",
             "properties": {
-                "task": {
+                "uName": {
                     "type": "string"
                 },
-                "assignee": {
-                    "type": "string"
+                "played": {
+                    "type": "integer"
                 },
-                "status": {
-                    "type": "string"
+                "wins": {
+                    "type": "integer"
+                },
+                "losses": {
+                    "type": "integer"
                 }
             }
-        },
-        "InvalidResponse": {
-            "type": "object",
-            "properties": {
-                "statusCode": {
-                    "type": "string"
-                },
-                "message": {
-                    "type": "string"
-                }
-            }
-
         }
     }
 }

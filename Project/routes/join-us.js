@@ -106,7 +106,7 @@ router.post("/userValidation", (req, res) => {
 });
 
 router.post('/profile-upload-single', upload.single('profile-file'), function (req, res, next) {
-    res.send("success")
+    res.redirect("/join-us/user")
   })
 
 router.get("/user", (req, res) => {

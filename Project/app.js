@@ -54,7 +54,7 @@ app.post("/sendMail", (req, res) => {
         service: "Gmail",
         auth: {
             user: "amalsn014916@gmail.com",
-            pass: "amalsn123"
+            pass: "whiiqdjuvnxcjbep"
         }
     });
     var mailOptions = {
@@ -96,8 +96,35 @@ app.get("/statistics", (req,res) => {
     }
 })
 
+app.get("/admin", (req, res, next) => {
+    if(!req.session.loggedUser){
+        res.redirect("/join-us/login")
+    }
+    else if(req.session.loggedUser == "amalsn"){
+        axios.get("http://localhost:5000/users",{headers:{"Access-Control-Allow-Origin":"*","Content-Type":"application/json"}}).then(response => {
+            res.render("Admin-Page",{
+                w: response.data
+            })
+        })
+    }
+    else{
+        let err = new Error("Not an admin")
+        next(err);
+    }
+})
+
+app.use((err, req, res, next) => {
+    console.log(err)
+    res.send("Not Admin")
+})
+
+app.post("/delete-user", async (req, res) => {
+    await axios.post("http://localhost:5000/delete-user",{uName: req.body.name})
+    res.redirect("/admin")
+})
+
 app.get("/leaderboard/tic-tac-toe", (req, res) => {
-    axios.get('http://localhost:5000/tic-tac-toe').then(response => {
+    axios.get('http://localhost:5000/tic-tac-toe',{headers:{"Access-Control-Allow-Origin":"*","Content-Type":"application/json"}}).then(response => {
         d = response.data
         d = d.map(l => {
             if(fs.existsSync("./public"+l.pic)){
@@ -118,7 +145,7 @@ app.get("/leaderboard/tic-tac-toe", (req, res) => {
 })
 
 app.get("/leaderboard/snake-ladder", (req, res) => {
-    axios.get('http://localhost:5000/snake-ladder').then(response => {
+    axios.get({url:'http://localhost:5000/snake-ladder',headers:{"Access-Control-Allow-Origin":"*","Content-Type":"application/json"}}).then(response => {
         d = response.data
         d = d.map(l => {
             if(fs.existsSync("./public"+l.pic)){
@@ -139,7 +166,7 @@ app.get("/leaderboard/snake-ladder", (req, res) => {
 })
 
 app.get("/leaderboard/ludo", (req, res) => {
-    axios.get('http://localhost:5000/ludo').then(response => {
+    axios.get({url:'http://localhost:5000/ludo',headers:{"Access-Control-Allow-Origin":"*","Content-Type":"application/json"}}).then(response => {
         d = response.data
         d = d.map(l => {
             if(fs.existsSync("./public"+l.pic)){

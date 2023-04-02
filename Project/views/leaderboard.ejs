@@ -27,36 +27,13 @@
             <div class="top-players">
                 <h2 class="section-title">Top Players</h2>
                 <div class="players">
-                    <div class="player">
-                        <img src=<%= w[0].pic %> alt="">
-                        <h3 class="player-name"><%= w[0].uName %></h3>
-                        <h3 class="player-name"><%= w[0].wins %></h3>
-                    </div>
-                    <div class="player">
-                        <img src=<%= w[1].pic %> alt="">
-                        <h3 class="player-name"><%= w[1].uName %></h3>
-                        <h3 class="player-name"><%= w[1].wins %></h3>
-                    </div>
-                    <div class="player">
-                        <img src=<%= w[2].pic %> alt="">
-                        <h3 class="player-name"><%= w[2].uName %></h3>
-                        <h3 class="player-name"><%= w[2].wins %></h3>
-                    </div>
-                    <div class="player">
-                        <img src=<%= w[3].pic %> alt="">
-                        <h3 class="player-name"><%= w[3].uName %></h3>
-                        <h3 class="player-name"><%= w[3].wins %></h3>
-                    </div>
-                    <div class="player">
-                        <img src=<%= w[4].pic %> alt="">
-                        <h3 class="player-name"><%= w[4].uName %></h3>
-                        <h3 class="player-name"><%= w[4].wins %></h3>
-                    </div>
-                    <div class="player">
-                        <img src=<%= w[5].pic %> alt="">
-                        <h3 class="player-name"><%= w[5].uName %></h3>
-                        <h3 class="player-name"><%= w[5].wins %></h3>
-                    </div>
+                    <% w.forEach(user => { %>
+                        <div class="player">
+                            <img src=<%= user.pic %> alt="">
+                            <h3 class="player-name"><%= user.uName %></h3>
+                            <h3 class="player-name"><%= user.wins %></h3>
+                        </div>
+                    <% }) %>
                 </div>
             </div>
         </section>
