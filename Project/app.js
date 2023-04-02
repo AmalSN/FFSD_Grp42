@@ -145,7 +145,7 @@ app.get("/leaderboard/tic-tac-toe", (req, res) => {
 })
 
 app.get("/leaderboard/snake-ladder", (req, res) => {
-    axios.get({url:'http://localhost:5000/snake-ladder',headers:{"Access-Control-Allow-Origin":"*","Content-Type":"application/json"}}).then(response => {
+    axios.get('http://localhost:5000/snake-ladder',{headers:{"Access-Control-Allow-Origin":"*","Content-Type":"application/json"}}).then(response => {
         d = response.data
         d = d.map(l => {
             if(fs.existsSync("./public"+l.pic)){
@@ -166,7 +166,7 @@ app.get("/leaderboard/snake-ladder", (req, res) => {
 })
 
 app.get("/leaderboard/ludo", (req, res) => {
-    axios.get({url:'http://localhost:5000/ludo',headers:{"Access-Control-Allow-Origin":"*","Content-Type":"application/json"}}).then(response => {
+    axios.get('http://localhost:5000/ludo',{headers:{"Access-Control-Allow-Origin":"*","Content-Type":"application/json"}}).then(response => {
         d = response.data
         d = d.map(l => {
             if(fs.existsSync("./public"+l.pic)){
