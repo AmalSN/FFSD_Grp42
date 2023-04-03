@@ -87,10 +87,48 @@
                 }
             }
         },
-        "/delete-user" : {
+        "/create-user" : {
             "post" : {
-                "summary" : "Delete a user",
+                "summary" : "Create a new user",
                 "description": "Get all statistics related to ludo",
+                "produces": ["/create-user"],
+                "parameters": [{
+                    "name": "user",
+                    "in": "body",
+                    "description": "User detail",
+                    "required": true,
+                    "type": "object"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/update-user" : {
+            "put" : {
+                "summary" : "Update user",
+                "description": "Update the first and lastname of a user",
+                "produces": ["/update-user"],
+                "parameters": [{
+                    "name": "user",
+                    "in": "body",
+                    "description": "User details",
+                    "required": true,
+                    "type": "object"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/delete-user" : {
+            "delete" : {
+                "summary" : "Delete a user",
+                "description": "Delete a user and all related data",
                 "produces": ["/delete-user"],
                 "parameters": [{
                     "name": "uName",
