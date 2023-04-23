@@ -1,11 +1,24 @@
 .brown-color{
-    background-color: burlywood;
+    background-color: rgb(143, 176, 214);
+}
+
+body::before{
+    background : url("https://images.unsplash.com/photo-1642056448378-4e83951f964e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80") repeat  center/cover;
+    content:"";
+    position: absolute;
+    top:57px;
+    left:0;
+    z-index:-1;
+    width:100vw;
+    height:100vh;
+    opacity:0.78;
+    /* background-image: fixed; */
 }
 
 .font-special{
     font-size: 5rem;
     /* color: rgb(114, 21, 21); */
-    color: brown;
+    color: red;
     font-family: 'Pacifico', cursive;
 }
 
@@ -21,3 +34,59 @@
 .box-transparent{
     opacity: 0.8;
 }
+.btn{
+    display:block;
+    cursor:pointer;
+    background-color: black;
+    color:white;
+    padding : 4px 21px;
+    border-radius : 15px;
+    outline :none;
+    position :relative;
+       top:0;
+    transition: top ease 0.5s;
+}
+.btn:hover{
+    background-color: brown;
+    box-shadow : 0 8px 10px -6px rgb(218,97,100);
+ box-shadow :  0 8px 10px -6px rgb(218, 97, 97);
+top : -10px;
+}
+.btn:active{
+    background-color: rgb(221, 216, 148);
+}
+
+
+.card-stat{
+    position :relative;
+       top:0;
+    transition: top ease 0.5s;
+   
+    /* background-color: brown; */
+      background:  -webkit-linear-gradient(#a8e063, #56ab2f);
+   
+
+   
+}
+.card-leader{
+    position :relative;
+       top:0;
+    transition: top ease 0.5s;
+    background : -webkit-linear-gradient(#8181e2, #ff00cc);
+
+   
+}
+.card-leader:hover{
+    box-shadow : 0 8px 10px -6px rgb(218,97,100);
+ box-shadow :  0 8px 10px -6px rgb(218, 97, 97);
+top : -10px;
+}
+
+
+.card-stat:hover{
+box-shadow : 0 8px 10px -6px rgb(218,97,100);
+ box-shadow :  0 8px 10px -6px rgb(218, 97, 97);
+top : -10px;
+}
+
+

@@ -9,7 +9,7 @@
     <title>Room Selection</title>
     <style>body{
         font-family: Calibri, Helvetica, sans-serif;
-        background-color: rgb(142, 169, 199);
+        background : linear-gradient(#ff6a00, #ee0979);
         }
         .container {
         padding: 100px;
@@ -26,7 +26,7 @@
          background: #ffffff;
         }
         input[type=text]:focus {
-        background-color: rgb(80, 107, 134);
+        background-color:  white;
         outline: none;
         }
         .center-block {
@@ -41,16 +41,16 @@
     <%- include('partial/navbar', {active: ""}); %>
 
     <form action="/games/ludo-room" method="GET">
-    
-
-        <div class="col-sm-12 mx-auto" style="width: 150px;">
-            <label for="room"><b><br>Enter Room</b></label>
-        <input type="text" id="room" name="room" required>
-    </div>
-    <div class="mx-auto" style="width: 100px;">
-         <button type="submit">Enter</button>
-         </div>
-   </div>
+        <div class = "d-flex flex-column justify-content-center align-items-center" style="margin: 150px auto;">
+            <div class = "d-flex flex-column justify-content-center align-items-center"> 
+                <label for="room"><b><h3 style="font-weight: bold;font-family: Georgia, 'Times New Roman', Times, serif;">Enter Your  Room Number</h3></label>
+                 <input type="text" id="room" name="room" style ="text-align: center;border-radius: 45px;font-size:medium; min-width: 40vw;"/>
+              </div>
+        
+              <div>
+             <button type="submit" style="display: block; min-width:90px; border-radius: 20px;outline:none;background-color: rgb(8, 8, 8);color:white;padding:4px 8px">Enter</button>
+             </div>
+       </div>
 
     </form>
     
