@@ -3,7 +3,7 @@ let htmlCode = ``;
 let cnt = 1;
 let turnOrder = 0;
 
-const socket = io("http://10.0.43.117:3000");   //Change IP to your system IP
+const socket = io("https://wbd-app-group-42.onrender.com");   //Change IP to your system IP
 
 socket.on("connection");
 

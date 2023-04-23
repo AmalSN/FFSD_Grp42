@@ -101,7 +101,7 @@ app.get("/admin", (req, res, next) => {
         res.redirect("/join-us/login")
     }
     else if(req.session.loggedUser == "amalsn"){
-        axios.get("http://localhost:5000/users",{headers:{"Access-Control-Allow-Origin":"*","Content-Type":"application/json"}}).then(response => {
+        axios.get("http://wbd-api-group-42.onrender.com/users",{headers:{"Access-Control-Allow-Origin":"*","Content-Type":"application/json"}}).then(response => {
             res.render("Admin-Page",{
                 w: response.data
             })
@@ -119,12 +119,12 @@ app.use((err, req, res, next) => {
 })
 
 app.post("/delete-user", async (req, res) => {
-    await axios.post("http://localhost:5000/delete-user",{uName: req.body.name})
+    await axios.post("http://wbd-api-group-42.onrender.com/delete-user",{uName: req.body.name})
     res.redirect("/admin")
 })
 
 app.get("/leaderboard/tic-tac-toe", (req, res) => {
-    axios.get('http://localhost:5000/tic-tac-toe',{headers:{"Access-Control-Allow-Origin":"*","Content-Type":"application/json"}}).then(response => {
+    axios.get('http://wbd-api-group-42.onrender.com/tic-tac-toe',{headers:{"Access-Control-Allow-Origin":"*","Content-Type":"application/json"}}).then(response => {
         d = response.data
         d = d.map(l => {
             if(fs.existsSync("./public"+l.pic)){
@@ -145,7 +145,7 @@ app.get("/leaderboard/tic-tac-toe", (req, res) => {
 })
 
 app.get("/leaderboard/snake-ladder", (req, res) => {
-    axios.get('http://localhost:5000/snake-ladder',{headers:{"Access-Control-Allow-Origin":"*","Content-Type":"application/json"}}).then(response => {
+    axios.get('http://wbd-api-group-42.onrender.com/snake-ladder',{headers:{"Access-Control-Allow-Origin":"*","Content-Type":"application/json"}}).then(response => {
         d = response.data
         d = d.map(l => {
             if(fs.existsSync("./public"+l.pic)){
@@ -166,7 +166,7 @@ app.get("/leaderboard/snake-ladder", (req, res) => {
 })
 
 app.get("/leaderboard/ludo", (req, res) => {
-    axios.get('http://localhost:5000/ludo',{headers:{"Access-Control-Allow-Origin":"*","Content-Type":"application/json"}}).then(response => {
+    axios.get('http://wbd-api-group-42.onrender.com/ludo',{headers:{"Access-Control-Allow-Origin":"*","Content-Type":"application/json"}}).then(response => {
         d = response.data
         d = d.map(l => {
             if(fs.existsSync("./public"+l.pic)){

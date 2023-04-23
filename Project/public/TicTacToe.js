@@ -15,7 +15,7 @@ console.log("Working");
 let blockSymbol = ["","","","","","","","",""];
 let currentSymbol = "X";
 
-const socket = io("http://192.168.223.245:3000");   //Change IP to your system IP
+const socket = io("https://wbd-app-group-42.onrender.com");   //Change IP to your system IP
 
 socket.on("connection");
 
