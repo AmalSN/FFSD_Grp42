@@ -12,8 +12,10 @@ router.use(bodyParser.urlencoded({ extended: false }));
 
 router.get("/tic-tac-toe", (req, res) => {
     if(req.session.loggedUser == undefined){
+        res.status(200)
         res.redirect("/join-us/login");
     }
+    res.status(200)
     res.render("TicTacToeRoomSelection",{
         loggedUser: req.session.loggedUser
     })

@@ -72,10 +72,12 @@ app.post("/sendMail", (req, res) => {
 
 app.get("/statistics", (req,res) => {
     if(req.session.loggedUser == undefined){
+        res.status(200)
         res.redirect("/join-us/login");
     }
     else{
         let played, wins, losses;
+        res.status(200)
         new Promise((resolve) => {
             Stat.findOne({uName: req.session.loggedUser}, (err, docs) => {
                 if(err)console.log(err);

@@ -14,4 +14,18 @@ describe("App", function(){
                     done()
             })
         })
+        it("stats status", function(done) {
+            chai.request(server).get("/statistics")
+                .end((err, res) => {
+                    expect(res).to.have.status(200)
+                    done()
+                })
+        })
+        it("games status", function(done) {
+            chai.request(server).get("/games/tic-tac-toe")
+                .end((err, res) => {
+                    expect(res).to.have.status(200)
+                    done()
+                })
+        })
 })
