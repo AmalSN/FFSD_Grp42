@@ -191,6 +191,7 @@ app.get("/", (req, res) => {
         res.redirect("/join-us/login");
     }
     else{
+        res.status(200)
         res.render("Main-Page",{
             loggedUser: req.session.loggedUser
         });
@@ -363,3 +364,5 @@ io.on("connection", (socket) => {
         io.to(socket.id).emit("freezeScreenL");
     });
 })
+
+module.exports = server
