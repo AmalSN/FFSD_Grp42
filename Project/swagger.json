@@ -9,7 +9,7 @@
         }
     },
     "schemes": ["http"],
-    "host": "localhost:5000",
+    "host": "https://wbd-api-group-42.onrender.com",
     "paths" : {
         "/tic-tac-toe" : {
             "get" : {
